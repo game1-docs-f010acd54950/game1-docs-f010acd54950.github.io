@@ -11,43 +11,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Docs4All</title>
+    <title>Real SpellS Oonline</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/master.css" rel="stylesheet">
+    <link href="assets/vendor/theme/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
-    <link href="assets/slide_menu/slide-menu.css" rel="stylesheet">
-    <link href="assets/css/github-markdown.css" rel="stylesheet">
-    <script type="text/javascript" src="assets/js/markdown-it-12.0.4.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/techfort/LokiJS/master/src/lokijs.js"></script>
-    <style media="screen">
-    .slide-menu {
-      position: unset;
-    }
-    #sidebar ul ul a {
-      background: unset;
-    }
-    .slide-menu {
-      height: unset;
-    }
-    .slide-menu__decorator{
-      float: right;
-    }
-    .markdown-body pre {
-      background-color: #cce0f4;
-      border-radius: 10px;
-    }    
-    </style>
+    <link href="assets/vendor/slide_menu/slide-menu.css" rel="stylesheet">
+    <link href="assets/vendor/github-markdown/css/github-markdown.css" rel="stylesheet">
+    <script src="assets/vendor/markdown-it/js/markdown-it-12.0.4.min.js" type="text/javascript" ></script>
+    <script src="https://rawgit.com/techfort/LokiJS/master/src/lokijs.js" type="text/javascript" ></script>
+    <script type="text/javascript" src="./assets/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>   
+    <script type="text/javascript" src="./assets/vendor/slide_menu/slide-menu.js"></script> 
+    <script type="text/javascript">
+      window._context = {};
+      window._context["global_csr_variables"] = {"game_api_base_url":"http://game-api.com"};
+      console.log("global_csr_variables", window._context["global_csr_variables"])
+    </script> 
 </head>
 
 <body>
     <div class="wrapper">
         <nav id="sidebar" class="active slide-menu">
             <div id="sidebar-header" class="sidebar-header" style="cursor: pointer;color: black;" onclick="location.href='/';">
-              <!-- <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo"> -->
+              <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo">
             </div>
             <ul id="menuContainer" class="list-unstyled components text-secondary">
 
@@ -64,8 +54,7 @@
                     <li class="nav-item dropdown">
                       <div class="nav-dropdown">
                         <div class="input-group rounded">
-                          <input id="search_input" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                          <span class="input-group-text border-0" id="search-addon">
+                          <span class="input-group-text border-0" id="search-button" style="height: 40px;cursor: pointer">
                             <i class="fas fa-search"></i>
                           </span>
                         </div>
@@ -80,25 +69,37 @@
                 </div>
             </nav>
             <!-- end of navbar navigation -->
-            <div class="content"  style="max-width: 80%;">
+            <div class="content"  style="max-width: 100%;">
                 <div class="container content markdown-body" style="width: 100%" id="rigthPreview">
 
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="search-modal" role="dialog" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content" id="search-modal-inner">
+              <div class="modal-header">
+                <input id="search_input" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start" id="search-modal-results-container">
+                
+              </div>
+            </div>
+          </div>
+        </div>        
     </div>
-    <script type="text/javascript" src="./assets/vendor/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./assets/js/sidebar-controller.js"></script>
-    <script type="text/javascript" src="./assets/slide_menu/slide-menu.js"></script>
-    <script type="text/javascript" src="./assets/js/api-client.js"></script>
-    <script type="text/javascript" src="./assets/js/menu-enhancer.js"></script>
-    <script type="text/javascript" src="./assets/js/menu-html-generator.js"></script>
-    <script type="text/javascript" src="./assets/js/markdown-converter.js"></script>
-    <script type="text/javascript" src="./assets/js/menu-controller.js"></script>
-    <script type="text/javascript" src="./assets/js/search-controller.js"></script>
-    <script type="text/javascript" src="./assets/js/branding-controller.js"></script>
-    <script type="text/javascript" src="./assets/js/app-entrypoint.js"></script>
+
+    <!-- docs4all assets -->
+    <link href="assets/docs4all/css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="./assets/docs4all/js/sidebar-controller.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/api-client.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/menu-enhancer.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/menu-html-generator.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/markdown-converter.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/menu-controller.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/search-controller.js"></script>
+    <script type="text/javascript" src="./assets/docs4all/js/app-entrypoint.js"></script>
 </body>
 
 </html>

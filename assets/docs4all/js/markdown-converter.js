@@ -7,13 +7,9 @@ function MarkdownConverter(){
   });  
 
   this.render = (markdownString) => {
-    var settings = this.apiClient.getSettings();
-    if(settings.hasProperty("variables")){ 
-      var variables = settings.getProperty("variables");
-      for(var key in variables){
-        var regex = new RegExp(`{{${key}}}`, 'g');
-        markdownString = markdownString.replace(regex, variables[key]);
-      }
+    for(var key in window._context["global_csr_variables"]){
+      var regex = new RegExp(`{{${key}}}`, 'g');
+      markdownString = markdownString.replace(regex, window._context["global_csr_variables"][key]);
     }
     return markdownConverter.render(markdownString)
   };
