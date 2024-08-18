@@ -18,3 +18,11 @@
     background-color: #cce0f4;
     border-radius: 10px;
 }
+
+.permalink_icon{
+    display:none;
+}
+
+.clickable{
+    cursor:pointer;
+}

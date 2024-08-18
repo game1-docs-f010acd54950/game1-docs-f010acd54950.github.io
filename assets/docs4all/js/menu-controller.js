@@ -1,19 +1,25 @@
 function MenuController() {
 
-  var markdownConverter = window._context["MarkdownConverter"];
-  var menuEnhancer = window._context["MenuEnhancer"];
-  var menuHtmlGenerator = window._context["MenuHtmlGenerator"];
-  var apiClient = window._context["ApiClient"];
-
+  var markdownConverter;
+  var menuEnhancer;
+  var menuHtmlGenerator;
+  var apiClient;
+  var fragmentController;
+  
   this.init = async () => {
+
+    markdownConverter = window._context["MarkdownConverter"];
+    menuEnhancer = window._context["MenuEnhancer"];
+    menuHtmlGenerator = window._context["MenuHtmlGenerator"];
+    apiClient = window._context["ApiClient"];
+    fragmentController = window._context["FragmentController"];
+    
     await this.createMenu();
     this.addListener();
-    this.renderPageFromPath("/root.md")
   };
 
   this.addListener = () => {
     $('#menuContainer').on("click", this.menuItemOnclick);
-    document.addEventListener("render-page", this.renderPageFromEvent);
   };
 
   this.createMenu = async () => {
@@ -45,28 +51,9 @@ function MenuController() {
     var event = new CustomEvent("render-page", {
       "detail": documentPath
     });
-
+    console.log(event)
     // Dispatch/Trigger/Fire the event
     document.dispatchEvent(event);
-  }
-
-  this.renderPageFromEvent = (event) => {
-    console.log("rendering page:"+event.detail);
-    this.renderPageFromPath(event.detail);
-  }
-
-  this.renderPageFromPath = async (documentPath) => {
-    if (typeof documentPath === "undefined") {
-      console.log(`document path is undefined.`);
-      return;
-    }
-
-    var document = await apiClient.findDocumentByPath(documentPath);
-    if (typeof document === 'undefined' || document.length === 0 || typeof document[0].text === 'undefined') {
-      return;
-    }
-    var html = markdownConverter.render(document[0].text);
-    $("#rigthPreview").html(html);
   }
 
 }

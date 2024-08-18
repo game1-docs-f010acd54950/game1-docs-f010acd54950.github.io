@@ -1,11 +1,15 @@
 function SearchController() {
 
-  var apiClient = window._context["ApiClient"];
-  var menuController = window._context["MenuController"];
+  var apiClient;
+  var fragmentController;
 
   var searchInput;
 
   this.init = async () => {
+
+    apiClient = window._context["ApiClient"];
+    fragmentController = window._context["FragmentController"];
+
     searchInput = $('#search_input');
     searchInput.keyup(this.onKeyUp);
 
@@ -22,7 +26,7 @@ function SearchController() {
 
   this.onResultRowClick = async (ev) => {
     var documentPath = ev.currentTarget.getAttribute("path");
-    await menuController.renderPageFromPath(documentPath);
+    await fragmentController.renderPageFromPath(documentPath);
     $("#search-modal").modal('hide');
   }
 

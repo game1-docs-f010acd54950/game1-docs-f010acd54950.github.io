@@ -1,16 +1,16 @@
 function AppEntryPoint(){
-
   var menuController = window._context["MenuController"];
   var sidebarController = window._context["SidebarController"];
   var searchController = window._context["SearchController"];
+  var fragmentController = window._context["FragmentController"];
   var apiClient = window._context["ApiClient"];
 
   this.init = async() => {
-    await apiClient.init()
-    menuController.init();
+    await apiClient.init()    
     sidebarController.init();
-    sidebarController.openSidebar();
     searchController.init();
+    fragmentController.init();
+    menuController.init();
   }
 
   $( document ).ready(()=> {

@@ -19,6 +19,8 @@ function SidebarController() {
       $('#body').toggleClass('active');
     });
 
+    this.openSidebar();
+
     // Auto-hide sidebar on window resize if window size is small
     // $(window).on('resize', function () {
     //     if ($(window).width() <= 768) {
